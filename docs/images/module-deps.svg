@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="mdBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+    <filter id="mdS" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <marker id="mdArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.2)"/>
+    </marker>
+  </defs>
+  <rect width="900" height="420" rx="16" fill="url(#mdBg)"/>
+
+  <text x="450" y="36" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">SERVER MODULE DEPENDENCIES</text>
+  <text x="450" y="54" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10">triflow-server 后端模块依赖关系</text>
+
+  <!-- Base (top) -->
+  <g filter="url(#mdS)">
+    <rect x="350" y="72" width="200" height="50" rx="10" fill="rgba(109,179,63,0.15)" stroke="rgba(109,179,63,0.5)" stroke-width="1.5"/>
+    <text x="450" y="102" text-anchor="middle" fill="#6DB33F" font-size="13" font-weight="700">🚀 base</text>
+  </g>
+  <text x="450" y="90" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">启动入口 · 端口 7100</text>
+
+  <!-- Lines from base to business -->
+  <path d="M 450 122 L 450 155" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none" marker-end="url(#mdArr)"/>
+
+  <!-- Business -->
+  <g filter="url(#mdS)">
+    <rect x="350" y="160" width="200" height="50" rx="10" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.5)" stroke-width="1.5"/>
+    <text x="450" y="190" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">📦 business</text>
+  </g>
+  <text x="450" y="178" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">业务逻辑模块</text>
+
+  <!-- Lines from business to commons -->
+  <g stroke="rgba(255,255,255,0.12)" stroke-width="1.2" fill="none">
+    <path d="M 370 210 L 100 255" marker-end="url(#mdArr)"/>
+    <path d="M 400 210 L 280 255" marker-end="url(#mdArr)"/>
+    <path d="M 430 210 L 390 255" marker-end="url(#mdArr)"/>
+    <path d="M 450 210 L 450 255" marker-end="url(#mdArr)"/>
+    <path d="M 470 210 L 510 255" marker-end="url(#mdArr)"/>
+    <path d="M 500 210 L 620 255" marker-end="url(#mdArr)"/>
+    <path d="M 530 210 L 800 255" marker-end="url(#mdArr)"/>
+  </g>
+
+  <!-- Common modules row 1 -->
+  <g filter="url(#mdS)">
+    <rect x="30" y="260" width="140" height="44" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.35)" stroke-width="1"/>
+    <text x="100" y="278" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">🔐 common-security</text>
+    <text x="100" y="294" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Sa-Token 鉴权</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="210" y="260" width="140" height="44" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1"/>
+    <text x="280" y="278" text-anchor="middle" fill="#3b82f6" font-size="10" font-weight="600">🐬 common-db-mysql</text>
+    <text x="280" y="294" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">MyBatis-Flex ORM</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="380" y="260" width="140" height="44" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.35)" stroke-width="1"/>
+    <text x="450" y="278" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600">⚡ common-db-redis</text>
+    <text x="450" y="294" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">缓存 · 会话</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="550" y="260" width="140" height="44" rx="8" fill="rgba(236,72,153,0.1)" stroke="rgba(236,72,153,0.35)" stroke-width="1"/>
+    <text x="620" y="278" text-anchor="middle" fill="#ec4899" font-size="10" font-weight="600">📦 common-oss</text>
+    <text x="620" y="294" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">MinIO / 阿里云</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="730" y="260" width="140" height="44" rx="8" fill="rgba(168,85,247,0.1)" stroke="rgba(168,85,247,0.35)" stroke-width="1"/>
+    <text x="800" y="278" text-anchor="middle" fill="#a855f7" font-size="10" font-weight="600">🤖 common-ai</text>
+    <text x="800" y="294" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">Spring AI 多模型</text>
+  </g>
+
+  <!-- Common modules row 2 -->
+  <g filter="url(#mdS)">
+    <rect x="30" y="320" width="140" height="44" rx="8" fill="rgba(34,211,238,0.1)" stroke="rgba(34,211,238,0.35)" stroke-width="1"/>
+    <text x="100" y="338" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="600">📊 common-excel</text>
+    <text x="100" y="354" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">导入导出</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="210" y="320" width="140" height="44" rx="8" fill="rgba(79,192,141,0.1)" stroke="rgba(79,192,141,0.35)" stroke-width="1"/>
+    <text x="280" y="338" text-anchor="middle" fill="#4FC08D" font-size="10" font-weight="600">📋 common-log</text>
+    <text x="280" y="354" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">操作日志</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="380" y="320" width="140" height="44" rx="8" fill="rgba(7,193,96,0.1)" stroke="rgba(7,193,96,0.35)" stroke-width="1"/>
+    <text x="450" y="338" text-anchor="middle" fill="#07c160" font-size="10" font-weight="600">💬 common-wechat</text>
+    <text x="450" y="354" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">微信登录 · 支付</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="550" y="320" width="140" height="44" rx="8" fill="rgba(251,146,60,0.1)" stroke="rgba(251,146,60,0.35)" stroke-width="1"/>
+    <text x="620" y="338" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="600">📱 common-sms</text>
+    <text x="620" y="354" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">短信服务</text>
+  </g>
+
+  <g filter="url(#mdS)">
+    <rect x="730" y="320" width="140" height="44" rx="8" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="1"/>
+    <text x="800" y="338" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="600">🏢 common-business</text>
+    <text x="800" y="354" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8">业务公共</text>
+  </g>
+
+  <!-- Dependencies (bottom) -->
+  <g stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none">
+    <path d="M 100 304 L 100 320"/>
+    <path d="M 280 304 L 280 320"/>
+    <path d="M 450 304 L 450 320"/>
+    <path d="M 620 304 L 620 320"/>
+    <path d="M 800 304 L 800 320"/>
+  </g>
+
+  <!-- common-core at bottom center -->
+  <g filter="url(#mdS)">
+    <rect x="320" y="382" width="260" height="30" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <text x="450" y="402" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-weight="600">🧱 common-core — 所有模块的基石</text>
+  </g>
+  <g stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none" stroke-dasharray="4,3">
+    <path d="M 100 364 L 380 382"/>
+    <path d="M 280 364 L 400 382"/>
+    <path d="M 450 364 L 450 382"/>
+    <path d="M 620 364 L 500 382"/>
+    <path d="M 800 364 L 520 382"/>
+  </g>
+</svg>

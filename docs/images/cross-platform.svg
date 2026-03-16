@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 180" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="cpBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+    <filter id="cpS" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    <marker id="cpArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="rgba(255,255,255,0.2)"/>
+    </marker>
+  </defs>
+  <rect width="900" height="180" rx="16" fill="url(#cpBg)"/>
+
+  <text x="450" y="30" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">CROSS-PLATFORM — ONE CODEBASE, MULTI TARGET</text>
+
+  <!-- Source code center -->
+  <g filter="url(#cpS)">
+    <rect x="340" y="50" width="220" height="60" rx="12" fill="rgba(79,192,141,0.12)" stroke="rgba(79,192,141,0.4)" stroke-width="1.5"/>
+    <text x="450" y="76" text-anchor="middle" fill="#4FC08D" font-size="13" font-weight="700">📱 triflow-app</text>
+    <text x="450" y="96" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="10">UniApp + Vue 3 · 一套代码</text>
+  </g>
+
+  <!-- Arrows -->
+  <g stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none">
+    <path d="M 380 110 L 120 135" marker-end="url(#cpArr)"/>
+    <path d="M 420 110 L 320 135" marker-end="url(#cpArr)"/>
+    <path d="M 480 110 L 580 135" marker-end="url(#cpArr)"/>
+    <path d="M 520 110 L 780 135" marker-end="url(#cpArr)"/>
+  </g>
+
+  <!-- WeChat -->
+  <g filter="url(#cpS)">
+    <rect x="40" y="130" width="160" height="38" rx="8" fill="rgba(7,193,96,0.1)" stroke="rgba(7,193,96,0.35)" stroke-width="1"/>
+    <text x="80" y="154" fill="#07c160" font-size="16">💬</text>
+    <text x="104" y="154" fill="#07c160" font-size="11" font-weight="600">微信小程序</text>
+  </g>
+
+  <!-- Android -->
+  <g filter="url(#cpS)">
+    <rect x="240" y="130" width="160" height="38" rx="8" fill="rgba(61,220,151,0.1)" stroke="rgba(61,220,151,0.35)" stroke-width="1"/>
+    <text x="280" y="154" fill="#3ddc97" font-size="16">🤖</text>
+    <text x="304" y="154" fill="#3ddc97" font-size="11" font-weight="600">Android</text>
+  </g>
+
+  <!-- iOS -->
+  <g filter="url(#cpS)">
+    <rect x="500" y="130" width="160" height="38" rx="8" fill="rgba(147,147,147,0.1)" stroke="rgba(147,147,147,0.35)" stroke-width="1"/>
+    <text x="540" y="154" fill="#a3a3a3" font-size="16">🍎</text>
+    <text x="564" y="154" fill="#a3a3a3" font-size="11" font-weight="600">iOS</text>
+  </g>
+
+  <!-- H5 -->
+  <g filter="url(#cpS)">
+    <rect x="700" y="130" width="160" height="38" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.35)" stroke-width="1"/>
+    <text x="740" y="154" fill="#3b82f6" font-size="16">🌐</text>
+    <text x="764" y="154" fill="#3b82f6" font-size="11" font-weight="600">H5 Web</text>
+  </g>
+</svg>

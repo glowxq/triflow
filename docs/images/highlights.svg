@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="hlBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0c29"/>
+      <stop offset="100%" stop-color="#24243e"/>
+    </linearGradient>
+    <filter id="hlS" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="900" height="160" rx="16" fill="url(#hlBg)"/>
+
+  <text x="450" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" letter-spacing="2">WHY TRIFLOW?</text>
+
+  <!-- Card 1 -->
+  <g filter="url(#hlS)">
+    <rect x="20" y="50" width="168" height="94" rx="10" fill="rgba(34,197,94,0.08)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+    <text x="104" y="76" text-anchor="middle" fill="#22c55e" font-size="22">🏗</text>
+    <text x="104" y="96" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="700">生产就绪</text>
+    <text x="104" y="114" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">不是 Demo，是真正可用</text>
+    <text x="104" y="130" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">的企业级脚手架</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g filter="url(#hlS)">
+    <rect x="198" y="50" width="168" height="94" rx="10" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+    <text x="282" y="76" text-anchor="middle" fill="#60a5fa" font-size="22">🔗</text>
+    <text x="282" y="96" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">三端统一</text>
+    <text x="282" y="114" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Server + Web + App</text>
+    <text x="282" y="130" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">统一技术栈 · 统一规范</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g filter="url(#hlS)">
+    <rect x="376" y="50" width="168" height="94" rx="10" fill="rgba(245,158,11,0.08)" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+    <text x="460" y="76" text-anchor="middle" fill="#f59e0b" font-size="22">📦</text>
+    <text x="460" y="96" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">开箱即用</text>
+    <text x="460" y="114" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">一键 Docker 部署</text>
+    <text x="460" y="130" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">零配置快速体验</text>
+  </g>
+
+  <!-- Card 4 -->
+  <g filter="url(#hlS)">
+    <rect x="554" y="50" width="168" height="94" rx="10" fill="rgba(168,85,247,0.08)" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+    <text x="638" y="76" text-anchor="middle" fill="#a855f7" font-size="22">🧩</text>
+    <text x="638" y="96" text-anchor="middle" fill="#a855f7" font-size="11" font-weight="700">模块解耦</text>
+    <text x="638" y="114" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">按需引入 · 灵活组合</text>
+    <text x="638" y="130" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">12+ 独立 Common 模块</text>
+  </g>
+
+  <!-- Card 5 -->
+  <g filter="url(#hlS)">
+    <rect x="732" y="50" width="148" height="94" rx="10" fill="rgba(236,72,153,0.08)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+    <text x="806" y="76" text-anchor="middle" fill="#ec4899" font-size="22">🔮</text>
+    <text x="806" y="96" text-anchor="middle" fill="#ec4899" font-size="11" font-weight="700">技术前沿</text>
+    <text x="806" y="114" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9">Java 25 · Vue 3.5</text>
+    <text x="806" y="130" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">虚拟线程 · 组合式 API</text>
+  </g>
+</svg>
