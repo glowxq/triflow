@@ -8,6 +8,8 @@
 
 让数据在各端之间流畅互通，开箱即用、一键部署
 
+> 🐱 **为什么叫"三流"？** — `Triflow` 谐音"三流"，名字不怕俗，代码不将就。三个端，认真做好每一个。
+
 ---
 
 [![Java 25](https://img.shields.io/badge/Java-25-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
@@ -30,6 +32,14 @@
 ## 🌟 项目介绍
 
 Triflow 是一个**生产就绪**的三端全栈开发脚手架，致力于为企业和独立开发者提供一套「开箱即用」的全栈解决方案。
+
+**一套脚手架，三个端，覆盖全链路：**
+
+| 端 | 子项目 | 能力 |
+|:---:|:---|:---|
+| 🖥 **服务端** | `triflow-server` | 提供 RESTful API 接口，内置权限、AI、文件管理等通用能力 |
+| 🌐 **Web 端** | `triflow-web` | H5 / Web 响应式管理后台，支持深色 / 浅色主题 |
+| 📱 **App 端** | `triflow-app` | 一套代码 → 微信小程序、Android APP、iOS APP、H5 |
 
 <p align="center">
   <img src="docs/images/highlights.svg" width="90%" alt="Why Triflow?">

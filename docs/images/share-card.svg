@@ -1,0 +1,263 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="40%" style="stop-color:#0f2847"/>
+      <stop offset="100%" style="stop-color:#163a5f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00EEFF"/>
+      <stop offset="100%" style="stop-color:#0088FF"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#6ee7b7"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#7dd3fc"/>
+    </linearGradient>
+    <linearGradient id="pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c084fc"/>
+      <stop offset="100%" style="stop-color:#e879f9"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#fcd34d"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="15%" cy="10%" r="45%">
+      <stop offset="0%" style="stop-color:rgba(96,165,250,0.2)"/>
+      <stop offset="100%" style="stop-color:rgba(96,165,250,0)"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="85%" cy="90%" r="45%">
+      <stop offset="0%" style="stop-color:rgba(56,189,248,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(56,189,248,0)"/>
+    </radialGradient>
+    <filter id="logoGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowFilter">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#glow1)"/>
+  <rect width="1080" height="1920" fill="url(#glow2)"/>
+
+  <!-- 网格点 -->
+  <g opacity="0.04">
+    <pattern id="dots" x="0" y="0" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="white"/>
+    </pattern>
+    <rect width="1080" height="1920" fill="url(#dots)"/>
+  </g>
+
+  <!-- 顶部线 -->
+  <rect x="0" y="0" width="1080" height="3" fill="url(#accent)" opacity="0.8"/>
+
+  <!-- 顶部标签 -->
+  <g transform="translate(540, 90)">
+    <rect x="-100" y="-18" width="200" height="36" rx="18" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+    <text text-anchor="middle" y="6" fill="rgba(96,165,250,0.9)" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="500" letter-spacing="4">OPEN SOURCE</text>
+  </g>
+
+  <!-- ===== 嵌入 Triflow Logo ===== -->
+  <g transform="translate(540, 250) scale(0.32)">
+    <!-- 背景光晕 -->
+    <circle cx="0" cy="0" r="200" fill="url(#logoGrad)" opacity="0.1"/>
+
+    <!-- 外圈装饰环 -->
+    <circle cx="0" cy="0" r="180" fill="none" stroke="url(#logoGrad)" stroke-width="1" opacity="0.2" stroke-dasharray="10,20"/>
+    <circle cx="0" cy="0" r="160" fill="none" stroke="url(#logoGrad)" stroke-width="1" opacity="0.15" stroke-dasharray="5,15"/>
+
+    <!-- 核心三角形 -->
+    <g filter="url(#logoGlow)">
+      <polygon points="0,-140 144,80 -144,80" fill="none" stroke="url(#logoGrad)" stroke-width="3" stroke-linejoin="round" opacity="0.7"/>
+    </g>
+
+    <!-- 三条流动曲线 -->
+    <path d="M0,-110 Q84,-60, 114,50" stroke="#00EEFF" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#softGlow)" opacity="0.9"/>
+    <path d="M114,50 Q0,120, -114,50" stroke="#00CCFF" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#softGlow)" opacity="0.9"/>
+    <path d="M-114,50 Q-86,-60, 0,-110" stroke="#00AAFF" stroke-width="4" stroke-linecap="round" fill="none" filter="url(#softGlow)" opacity="0.9"/>
+
+    <!-- 顶部节点 - Server -->
+    <g filter="url(#logoGlow)">
+      <circle cx="0" cy="-120" r="32" fill="url(#logoGrad)"/>
+      <circle cx="0" cy="-120" r="24" fill="#0a1628"/>
+      <rect x="-12" y="-132" width="24" height="16" rx="2" fill="none" stroke="#00EEFF" stroke-width="2"/>
+      <line x1="-8" y1="-127" x2="8" y2="-127" stroke="#00CCFF" stroke-width="1.5" opacity="0.9"/>
+      <line x1="-8" y1="-123" x2="4" y2="-123" stroke="#00AAFF" stroke-width="1.5" opacity="0.7"/>
+      <line x1="0" y1="-116" x2="0" y2="-112" stroke="#00EEFF" stroke-width="2"/>
+      <line x1="-6" y1="-112" x2="6" y2="-112" stroke="#00EEFF" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- 右下节点 - Web -->
+    <g filter="url(#logoGlow)">
+      <circle cx="124" cy="60" r="32" fill="url(#logoGrad)"/>
+      <circle cx="124" cy="60" r="24" fill="#0a1628"/>
+      <rect x="110" y="48" width="28" height="22" rx="3" fill="none" stroke="#00EEFF" stroke-width="2"/>
+      <line x1="110" y1="55" x2="138" y2="55" stroke="#00EEFF" stroke-width="1.5"/>
+      <circle cx="115" cy="51.5" r="1.5" fill="#FF6B6B"/>
+      <circle cx="120" cy="51.5" r="1.5" fill="#FFE66D"/>
+      <circle cx="125" cy="51.5" r="1.5" fill="#4ECB71"/>
+      <line x1="114" y1="60" x2="134" y2="60" stroke="#00CCFF" stroke-width="1.5" opacity="0.8"/>
+      <line x1="114" y1="64" x2="130" y2="64" stroke="#00AAFF" stroke-width="1.5" opacity="0.6"/>
+    </g>
+
+    <!-- 左下节点 - App -->
+    <g filter="url(#logoGlow)">
+      <circle cx="-124" cy="60" r="32" fill="url(#logoGrad)"/>
+      <circle cx="-124" cy="60" r="24" fill="#0a1628"/>
+      <rect x="-133" y="46" width="18" height="28" rx="3" fill="none" stroke="#00EEFF" stroke-width="2"/>
+      <line x1="-127" y1="50" x2="-121" y2="50" stroke="#00CCFF" stroke-width="1.5" stroke-linecap="round"/>
+      <rect x="-130" y="53" width="12" height="14" rx="1" fill="none" stroke="#00CCFF" stroke-width="1" opacity="0.7"/>
+      <circle cx="-124" cy="70" r="2" fill="#00EEFF"/>
+    </g>
+
+    <!-- 中心数据汇聚 -->
+    <g filter="url(#logoGlow)">
+      <circle cx="0" cy="0" r="18" fill="url(#logoGrad)" opacity="0.35"/>
+      <circle cx="0" cy="0" r="8" fill="#00EEFF"/>
+    </g>
+  </g>
+
+  <!-- 主标题 -->
+  <g transform="translate(540, 395)">
+    <text text-anchor="middle" y="0" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" letter-spacing="-1">Triflow</text>
+    <text text-anchor="middle" y="48" fill="rgba(125,211,252,0.5)" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" letter-spacing="2">三端全栈开发脚手架</text>
+  </g>
+
+  <!-- 标语 -->
+  <g transform="translate(540, 510)">
+    <rect x="-250" y="-26" width="500" height="52" rx="26" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.15)" stroke-width="1"/>
+    <text text-anchor="middle" y="7" fill="url(#gold)" font-family="system-ui, -apple-system, sans-serif" font-size="21" font-weight="600">「 名字三流，代码不将就 」</text>
+  </g>
+
+  <!-- 分隔 -->
+  <g transform="translate(540, 580)">
+    <line x1="-180" y1="0" x2="-16" y2="0" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="3.5" fill="url(#accent)"/>
+    <line x1="16" y1="0" x2="180" y2="0" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
+  </g>
+
+  <!-- ===== 服务端 ===== -->
+  <g transform="translate(90, 620)">
+    <rect width="900" height="175" rx="18" fill="rgba(52,211,153,0.03)" stroke="rgba(52,211,153,0.1)" stroke-width="1"/>
+    <rect width="3.5" height="115" x="0" y="30" rx="2" fill="url(#green)"/>
+    <g transform="translate(48, 47)">
+      <rect width="76" height="76" rx="18" fill="rgba(52,211,153,0.08)" stroke="rgba(52,211,153,0.18)" stroke-width="1"/>
+      <text x="38" y="52" text-anchor="middle" fill="url(#green)" font-size="34">🖥</text>
+    </g>
+    <text x="155" y="68" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="27" font-weight="700">服务端</text>
+    <text x="275" y="68" fill="rgba(52,211,153,0.75)" font-family="SF Mono, Menlo, monospace" font-size="17" font-weight="500">triflow-server</text>
+    <text x="155" y="104" fill="rgba(255,255,255,0.5)" font-family="system-ui, -apple-system, sans-serif" font-size="16">提供 RESTful API 接口，内置权限、AI、文件管理</text>
+    <g transform="translate(155, 122)">
+      <rect width="88" height="27" rx="13.5" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.22)" stroke-width="0.5"/>
+      <text x="44" y="18" text-anchor="middle" fill="rgba(110,231,183,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Java 25</text>
+      <rect x="98" width="148" height="27" rx="13.5" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.22)" stroke-width="0.5"/>
+      <text x="172" y="18" text-anchor="middle" fill="rgba(110,231,183,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Spring Boot 3.5</text>
+      <rect x="256" width="128" height="27" rx="13.5" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.22)" stroke-width="0.5"/>
+      <text x="320" y="18" text-anchor="middle" fill="rgba(110,231,183,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">MyBatis-Flex</text>
+      <rect x="394" width="105" height="27" rx="13.5" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.22)" stroke-width="0.5"/>
+      <text x="446" y="18" text-anchor="middle" fill="rgba(110,231,183,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Spring AI</text>
+    </g>
+  </g>
+
+  <!-- ===== Web 端 ===== -->
+  <g transform="translate(90, 815)">
+    <rect width="900" height="175" rx="18" fill="rgba(56,189,248,0.03)" stroke="rgba(56,189,248,0.1)" stroke-width="1"/>
+    <rect width="3.5" height="115" x="0" y="30" rx="2" fill="url(#sky)"/>
+    <g transform="translate(48, 47)">
+      <rect width="76" height="76" rx="18" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.18)" stroke-width="1"/>
+      <text x="38" y="52" text-anchor="middle" fill="url(#sky)" font-size="34">🌐</text>
+    </g>
+    <text x="155" y="68" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="27" font-weight="700">Web 端</text>
+    <text x="264" y="68" fill="rgba(56,189,248,0.75)" font-family="SF Mono, Menlo, monospace" font-size="17" font-weight="500">triflow-web</text>
+    <text x="155" y="104" fill="rgba(255,255,255,0.5)" font-family="system-ui, -apple-system, sans-serif" font-size="16">H5 / Web 响应式管理后台，深色 / 浅色主题</text>
+    <g transform="translate(155, 122)">
+      <rect width="78" height="27" rx="13.5" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.22)" stroke-width="0.5"/>
+      <text x="39" y="18" text-anchor="middle" fill="rgba(125,211,252,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Vue 3.5</text>
+      <rect x="88" width="118" height="27" rx="13.5" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.22)" stroke-width="0.5"/>
+      <text x="147" y="18" text-anchor="middle" fill="rgba(125,211,252,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Element Plus</text>
+      <rect x="216" width="108" height="27" rx="13.5" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.22)" stroke-width="0.5"/>
+      <text x="270" y="18" text-anchor="middle" fill="rgba(125,211,252,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">TypeScript</text>
+      <rect x="334" width="118" height="27" rx="13.5" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.22)" stroke-width="0.5"/>
+      <text x="393" y="18" text-anchor="middle" fill="rgba(125,211,252,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Vben Admin</text>
+    </g>
+  </g>
+
+  <!-- ===== App 端 ===== -->
+  <g transform="translate(90, 1010)">
+    <rect width="900" height="175" rx="18" fill="rgba(192,132,252,0.03)" stroke="rgba(192,132,252,0.1)" stroke-width="1"/>
+    <rect width="3.5" height="115" x="0" y="30" rx="2" fill="url(#pink)"/>
+    <g transform="translate(48, 47)">
+      <rect width="76" height="76" rx="18" fill="rgba(192,132,252,0.08)" stroke="rgba(192,132,252,0.18)" stroke-width="1"/>
+      <text x="38" y="52" text-anchor="middle" fill="url(#pink)" font-size="34">📱</text>
+    </g>
+    <text x="155" y="68" fill="white" font-family="system-ui, -apple-system, sans-serif" font-size="27" font-weight="700">App 端</text>
+    <text x="261" y="68" fill="rgba(192,132,252,0.75)" font-family="SF Mono, Menlo, monospace" font-size="17" font-weight="500">triflow-app</text>
+    <text x="155" y="104" fill="rgba(255,255,255,0.5)" font-family="system-ui, -apple-system, sans-serif" font-size="16">一套代码 → 微信小程序 / Android / iOS / H5</text>
+    <g transform="translate(155, 122)">
+      <rect width="78" height="27" rx="13.5" fill="rgba(192,132,252,0.1)" stroke="rgba(192,132,252,0.22)" stroke-width="0.5"/>
+      <text x="39" y="18" text-anchor="middle" fill="rgba(232,121,249,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">UniApp</text>
+      <rect x="88" width="138" height="27" rx="13.5" fill="rgba(192,132,252,0.1)" stroke="rgba(192,132,252,0.22)" stroke-width="0.5"/>
+      <text x="157" y="18" text-anchor="middle" fill="rgba(232,121,249,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Wot Design Uni</text>
+      <rect x="236" width="88" height="27" rx="13.5" fill="rgba(192,132,252,0.1)" stroke="rgba(192,132,252,0.22)" stroke-width="0.5"/>
+      <text x="280" y="18" text-anchor="middle" fill="rgba(232,121,249,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">UnoCSS</text>
+      <rect x="334" width="78" height="27" rx="13.5" fill="rgba(192,132,252,0.1)" stroke="rgba(192,132,252,0.22)" stroke-width="0.5"/>
+      <text x="373" y="18" text-anchor="middle" fill="rgba(232,121,249,0.9)" font-family="SF Mono, Menlo, monospace" font-size="12.5" font-weight="500">Alova</text>
+    </g>
+  </g>
+
+  <!-- ===== 亮点标题 ===== -->
+  <g transform="translate(540, 1270)">
+    <text text-anchor="middle" y="0" fill="rgba(125,211,252,0.3)" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="500" letter-spacing="6">HIGHLIGHTS</text>
+  </g>
+
+  <!-- ===== 亮点卡片 ===== -->
+  <g transform="translate(90, 1305)">
+    <g><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">🔐</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">RBAC 权限</text></g>
+    <g transform="translate(230, 0)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">🤖</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">AI 多模型</text></g>
+    <g transform="translate(460, 0)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">🐳</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">Docker 一键</text></g>
+    <g transform="translate(690, 0)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">💬</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">微信集成</text></g>
+    <g transform="translate(0, 115)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">📂</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">文件存储</text></g>
+    <g transform="translate(230, 115)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">💰</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">钱包支付</text></g>
+    <g transform="translate(460, 115)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">📝</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">内容管理</text></g>
+    <g transform="translate(690, 115)"><rect width="210" height="95" rx="14" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.08)" stroke-width="1"/><text x="105" y="40" text-anchor="middle" fill="white" font-size="26">📊</text><text x="105" y="68" text-anchor="middle" fill="rgba(125,211,252,0.7)" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">数据报表</text></g>
+  </g>
+
+  <!-- ===== GitHub 地址 ===== -->
+  <g transform="translate(540, 1630)">
+    <rect x="-290" y="-33" width="580" height="66" rx="33" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
+    <g transform="translate(-252, -12)">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.57v-2.01c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.28-1.23 3.28-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .31.22.69.82.57C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" fill="rgba(125,211,252,0.7)" transform="scale(0.85)"/>
+    </g>
+    <text text-anchor="middle" x="24" y="7" fill="rgba(125,211,252,0.85)" font-family="SF Mono, Menlo, monospace" font-size="21" font-weight="500">github.com/glowxq/triflow</text>
+  </g>
+
+  <!-- Star -->
+  <g transform="translate(540, 1720)">
+    <text text-anchor="middle" y="0" fill="url(#gold)" font-family="system-ui, -apple-system, sans-serif" font-size="19" font-weight="600" filter="url(#glowFilter)">⭐ Star 是最大的鼓励</text>
+  </g>
+
+  <!-- 底部 -->
+  <g transform="translate(540, 1810)">
+    <line x1="-280" y1="-30" x2="280" y2="-30" stroke="rgba(96,165,250,0.08)" stroke-width="1"/>
+    <text text-anchor="middle" y="0" fill="rgba(125,211,252,0.25)" font-family="system-ui, -apple-system, sans-serif" font-size="13">Apache License 2.0  ·  Open Source  ·  Production Ready</text>
+    <text text-anchor="middle" y="28" fill="rgba(125,211,252,0.18)" font-family="system-ui, -apple-system, sans-serif" font-size="12">Made with ❤️ by glowxq</text>
+  </g>
+
+  <rect x="0" y="1917" width="1080" height="3" fill="url(#accent)" opacity="0.8"/>
+</svg>
