@@ -1,0 +1,47 @@
+# ============================================================
+# common-wechat 模块配置示例
+# ============================================================
+# 使用时请在主应用的配置文件中覆盖这些值
+# ============================================================
+
+wechat:
+  # 微信小程序配置
+  # 配置前缀: wechat.mini-app
+  mini-app:
+    # 小程序 AppID
+    app-id: your-wechat-appid
+    # 小程序密钥
+    secret: your-wechat-secret
+    # 消息校验 Token（可选）
+    token:
+    # 消息加解密密钥（可选）
+    aes-key:
+    # 消息格式（JSON 或 XML）
+    msg-data-format: JSON
+
+  # 微信支付配置
+  # 配置前缀: wechat.pay
+  pay:
+    # 关联的 AppID（小程序或公众号）
+    app-id: your-app-id
+    # 商户号
+    mch-id: your-mch-id
+    # 商户密钥（V2 API 使用）
+    mch-key: your-mch-key
+    # API V3 密钥（V3 API 使用）
+    api-v3-key: your-api-v3-key
+    # 通知 URL 前缀
+    notify-url: https://your-domain.com/api
+    # 支付通知路径（完整 URL = notify-url + pay-notify-path）
+    pay-notify-path: /notify/wechat/pay
+    # 退款通知路径（完整 URL = notify-url + refund-notify-path）
+    refund-notify-path: /notify/wechat/refund
+    # 商户私钥文件路径
+    private-key-path: classpath:cert/apiclient_key.pem
+    # 商户证书文件路径
+    private-cert-path: classpath:cert/apiclient_cert.pem
+    # p12 证书路径（可选，某些旧版接口需要）
+    key-path: classpath:cert/apiclient_cert.p12
+    # 服务商模式配置（可选）
+    # sub-app-id: your-sub-app-id
+    # sub-mch-id: your-sub-mch-id

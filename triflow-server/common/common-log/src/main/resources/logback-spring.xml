@@ -1,0 +1,119 @@
+<configuration>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <springProperty name="APP_NAME" source="spring.application.name"/>
+
+    <!-- 日志输出路径及文件配置 -->
+    <property name="LOG_PATH" value="./logs/${APP_NAME}"/>
+    <property name="MAX_HISTORY" value="60"/>
+    <property name="MAX_FILE_SIZE" value="500MB"/>
+    <property name="TOTAL_SIZE_CAP" value="5000MB"/>
+
+    <!-- 日志格式配置 -->
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <!-- 控制台彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%clr(%t){cyan}] %clr(${PID:- }){magenta} [%clr(${APP_NAME:-}){blue}] %highlight(%-5level) %magenta(%logger{30}:%-3L) traceId:[%X{mdc_span_id}] %X{mdc_prefix} - %m%n"/>
+    <!-- 文件日志格式 -->
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] ${PID:- } [${APP_NAME:-}] %-5level %logger{30}:%-3L traceId:[%X{mdc_span_id}] %X{mdc_prefix} - %m%n"/>
+
+    <!-- 控制台输出 -->
+    <appender name="CONSOLE" class="com.glowxq.common.logger.desensitize.DesensitizeConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <!-- INFO 级别滚动日志 -->
+    <appender name="APPLICATION" class="com.glowxq.common.logger.desensitize.DesensitizeRollingFileAppender">
+        <file>${LOG_PATH}/app.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/app.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- WARN 级别滚动日志 -->
+    <appender name="WARN" class="com.glowxq.common.logger.desensitize.DesensitizeRollingFileAppender">
+        <file>${LOG_PATH}/warn.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/warn.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- ERROR 级别滚动日志 -->
+    <appender name="ERROR" class="com.glowxq.common.logger.desensitize.DesensitizeRollingFileAppender">
+        <file>${LOG_PATH}/error.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- HTTP 请求日志 -->
+    <appender name="HTTP-TOPIC" class="com.glowxq.common.logger.desensitize.DesensitizeRollingFileAppender">
+        <file>${LOG_PATH}/http-topic.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/http-topic.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>${MAX_HISTORY}</maxHistory>
+            <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+            <totalSizeCap>${TOTAL_SIZE_CAP}</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- HTTP 日志独立输出 -->
+    <logger name="http-log" level="INFO" additivity="false">
+        <appender-ref ref="HTTP-TOPIC"/>
+    </logger>
+
+    <!-- 根日志配置 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!-- 取消下面的注释以启用文件日志输出 -->
+        <!--<appender-ref ref="APPLICATION"/>-->
+        <!--<appender-ref ref="WARN"/>-->
+        <!--<appender-ref ref="ERROR"/>-->
+    </root>
+</configuration>

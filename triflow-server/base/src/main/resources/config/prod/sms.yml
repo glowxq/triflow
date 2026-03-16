@@ -1,0 +1,29 @@
+sms:
+  config-type: yaml
+  provider: ${SMS_PROVIDER:aliyun-pnvs}
+  code:
+    login-template-id: ${SMS_LOGIN_TEMPLATE_ID:100001}
+    register-template-id: ${SMS_REGISTER_TEMPLATE_ID:100001}
+    reset-template-id: ${SMS_RESET_TEMPLATE_ID:100003}
+  pnvs:
+    access-key-id: ${aliyun.access-key}
+    access-key-secret: ${aliyun.access-key-secret}
+    endpoint: dypnsapi.aliyuncs.com
+    sign-name: ${SMS_SIGN_NAME}
+    scheme-name:
+    country-code: 86
+    valid-time: 300
+    interval: 60
+    code-length: 6
+    code-type: 1
+    duplicate-policy: 1
+    auto-retry: 1
+    return-verify-code: false
+  blends:
+    autoLogin:
+      supplier: alibaba
+      access-key-id: ${aliyun.access-key}
+      access-key-secret: ${aliyun.access-key-secret}
+      signature: ${SMS_SIGN_NAME}
+      template-id: ${sms.code.login-template-id}
+      connect-timeout: 3000

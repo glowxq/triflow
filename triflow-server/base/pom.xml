@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.glowxq.triflow</groupId>
+        <artifactId>triflow</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <groupId>com.glowxq.triflow.base</groupId>
+    <artifactId>base</artifactId>
+    <name>Triflow Base</name>
+    <description>Triflow 基础脚手架模块 - 应用启动入口</description>
+
+    <dependencies>
+
+        <!-- 通用业务公共依赖 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-business</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Flyway 数据库迁移 -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-mysql</artifactId>
+        </dependency>
+
+        <!-- Knife4j API 文档 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- AI 服务 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-ai</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- AI 提供商 Starters (按需启用) -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-deepseek</artifactId>
+        </dependency>
+        <!-- 更多 AI Starters (取消注释以启用)
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-zhipuai</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-anthropic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-ollama</artifactId>
+        </dependency>
+        -->
+
+        <!-- 微信小程序服务 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-wechat</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- 短信服务 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-sms</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- 阿里云号码认证服务 -->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>alibabacloud-dypnsapi20170525</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>repackage</id>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

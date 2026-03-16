@@ -1,0 +1,21 @@
+{
+  "name": "@triflow/backend-mock",
+  "version": "1.0.0",
+  "description": "Triflow backend mock server",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "glowxq",
+  "scripts": {
+    "build": "nitro build",
+    "start": "nitro dev"
+  },
+  "dependencies": {
+    "@faker-js/faker": "catalog:",
+    "jsonwebtoken": "catalog:",
+    "nitropack": "catalog:"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "catalog:",
+    "h3": "catalog:"
+  }
+}

@@ -1,0 +1,15 @@
+s3:
+  enabled: ${S3_ENABLED:true}
+  provider: ${S3_PROVIDER:ALIYUN}
+  endpoint: ${S3_ENDPOINT}
+  region: ${S3_REGION}
+  access-key: ${aliyun.access-key}
+  secret-key: ${aliyun.access-key-secret}
+  bucket-name: ${S3_BUCKET:${app.name}}
+  domain: ${S3_DOMAIN:}
+  naming-strategy: ORIGINAL
+  use-https: true
+  presigned-url-expire-minutes: 10
+  sts-token-duration-seconds: 3600
+  sts-role-arn: ${S3_STS_ROLE_ARN:}
+  sts-role-session-name: s3-upload-session

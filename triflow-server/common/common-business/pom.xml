@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>triflow-common</artifactId>
+        <groupId>com.glowxq.triflow</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>common-business</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--Core模块-->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-core</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- mysql数据库模块 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-db-mysql</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--鉴权模块-->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-security</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--微信模块-->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-wechat</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--日志模块-->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-log</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!--redis模块-->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-db-redis</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-excel</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- oss模块 -->
+        <dependency>
+            <groupId>com.glowxq.triflow</groupId>
+            <artifactId>common-oss</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <!-- aspect aop 切面-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+    </dependencies>
+</project>

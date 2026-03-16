@@ -1,0 +1,20 @@
+business:
+  business-switch:
+    user:
+      user-simple: true
+      need-phone: true
+    login:
+      sms-phone: true
+      wechat-applet: true
+      email: true
+      username: true
+    register:
+      sms-phone: true
+      wechat-applet: true
+      username: true
+
+# CORS 跨域配置
+web:
+  cors:
+    allowed-origins:
+      - "*"

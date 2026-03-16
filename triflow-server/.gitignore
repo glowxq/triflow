@@ -1,0 +1,130 @@
+# ========================
+# IDE 和编辑器配置
+# ========================
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ========================
+# Maven 构建目录
+# ========================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ========================
+# Gradle 构建目录
+# ========================
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+**/buildOutput*/
+**/buildout*/
+
+# ========================
+# 日志文件
+# ========================
+logs/
+*.log
+*.log.*
+
+# ========================
+# 操作系统文件
+# ========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ========================
+# 本地环境配置
+# ========================
+# direnv 环境配置（本地 JDK 版本等）
+.envrc
+.envrc.local
+
+# ========================
+# 敏感配置文件
+# ========================
+# 环境配置（可能包含密码等敏感信息）
+application-local.yml
+application-local.yaml
+application-local.properties
+**/secret*.yml
+**/secret*.yaml
+**/secret*.properties
+
+# SSH 和密钥文件
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+
+# ========================
+# 临时文件
+# ========================
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# ========================
+# 测试和覆盖率报告
+# ========================
+test-output/
+coverage/
+*.exec
+jacoco.exec
+
+# ========================
+# 其他
+# ========================
+# 数据库文件
+*.db
+*.sqlite
+
+# 压缩文件
+# *.zip
+# *.tar.gz
+# *.rar
+
+# 本地运行产生的文件
+/uploads/
+/download/
+/static/upload/

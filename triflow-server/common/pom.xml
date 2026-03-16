@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>triflow</artifactId>
+        <groupId>com.glowxq.triflow</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>triflow-common</artifactId>
+    <packaging>pom</packaging>
+    <name>Triflow Common</name>
+    <description>Triflow 通用模块聚合</description>
+
+    <modules>
+        <module>common-core</module>
+        <module>common-db-mysql</module>
+        <module>common-db-redis</module>
+        <module>common-excel</module>
+        <module>common-log</module>
+        <module>common-oss</module>
+        <module>common-security</module>
+        <module>common-wechat</module>
+        <module>common-business</module>
+        <module>common-sms</module>
+        <module>common-ai</module>
+    </modules>
+
+</project>

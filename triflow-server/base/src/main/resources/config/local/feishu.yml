@@ -1,0 +1,10 @@
+# 飞书配置 (可选：配置后启用飞书通知/登录功能)
+feishu:
+  robot:
+    webhook:
+      internal-url: ${FEISHU_WEBHOOK_INTERNAL:https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-id}
+      business-url: ${FEISHU_WEBHOOK_BUSINESS:https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-id}
+  app:
+    app-id: ${FEISHU_APP_ID:your-feishu-app-id}
+    app-secret: ${FEISHU_APP_SECRET:your-feishu-app-secret}
+    redirect-uri: ${FEISHU_REDIRECT_URI:http://localhost:7200/auth/login}

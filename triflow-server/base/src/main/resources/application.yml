@@ -1,0 +1,47 @@
+
+app:
+  project: triflow
+  version: @project.version@
+  environment: ${spring.profiles.active}
+  business: base
+  name: ${app.project}-${app.business}
+
+server:
+  port: 7100
+  shutdown: graceful
+  # 注意：不使用 context-path，接口前缀在各 Controller 的 @RequestMapping 中显式定义
+  # 例如：@RequestMapping("/base/auth") 或 @RequestMapping("/base/public/captcha")
+
+spring:
+  threads:
+    virtual:
+      # 启用虚拟线程
+      enabled: true
+  profiles:
+    active: local
+  config:
+    import:
+      - optional:classpath:/config/${spring.profiles.active}/secret.yml
+      - optional:classpath:/config/${spring.profiles.active}/business.yml
+      - optional:classpath:/config/${spring.profiles.active}/sms.yml
+      - optional:classpath:/config/${spring.profiles.active}/flyway.yml
+      - optional:classpath:/config/${spring.profiles.active}/knife4j.yml
+      - optional:classpath:/config/${spring.profiles.active}/s3.yml
+      - optional:classpath:/config/${spring.profiles.active}/mybatis-flex.yml
+      - optional:classpath:/config/${spring.profiles.active}/mysql.yml
+      - optional:classpath:/config/${spring.profiles.active}/page-helper.yml
+      - optional:classpath:/config/${spring.profiles.active}/redis.yml
+      - optional:classpath:/config/${spring.profiles.active}/sa-token.yml
+      - optional:classpath:/config/${spring.profiles.active}/feishu.yml
+      - optional:classpath:/config/${spring.profiles.active}/tenant.yml
+      - optional:classpath:/config/${spring.profiles.active}/wechat.yml
+      - optional:classpath:/config/${spring.profiles.active}/ai.yml
+  mvc:
+    path-match:
+      matching-strategy: ant_path_matcher
+  application:
+    name: ${app.name}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 15MB

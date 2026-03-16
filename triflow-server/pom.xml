@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 直接继承 Spring Boot Parent -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.9</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.glowxq.triflow</groupId>
+    <artifactId>triflow</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>Triflow Server</name>
+    <description>Triflow 三端企业级快速开发脚手架 - 后端服务 (Java 25 + Spring Boot 3.5)</description>
+
+    <modules>
+        <module>common</module>
+        <module>dependencies</module>
+        <module>business</module>
+        <module>demo</module>
+        <module>base</module>
+    </modules>
+
+    <!-- 配置全局属性 -->
+    <properties>
+        <!-- Triflow 版本 -->
+        <revision>1.0.0</revision>
+        <!-- Java 版本 -->
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <java.version>25</java.version>
+        <!-- AI -->
+        <spring-ai.version>1.1.1</spring-ai.version>
+        <!-- 其他配置 -->
+        <skipTests>true</skipTests>
+        <flatten-maven-plugin.version>1.6.0</flatten-maven-plugin.version>
+        <!-- 注解处理器版本（需与 dependencies 模块保持一致） -->
+        <lombok.version>1.18.42</lombok.version>
+        <mapstruct-plus.version>1.5.0</mapstruct-plus.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.glowxq.triflow</groupId>
+                <artifactId>dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Spring AI BOM (需在根 POM 直接导入，BOM 嵌套 import 不传递) -->
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!--全局通用依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>2.2.27</version>
+        </dependency>
+    </dependencies>
+    <!--maven仓库加速，按需引用-->
+   <!-- <repositories>
+        &lt;!&ndash;阿里云仓库&ndash;&gt;
+        <repository>
+            <id>public</id>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        &lt;!&ndash;华为云仓库&ndash;&gt;
+        <repository>
+            <id>huaweicloudmaven</id>
+            <url>https://repo.huaweicloud.com/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        &lt;!&ndash;腾讯云仓库&ndash;&gt;
+        <repository>
+            <id>tencentcloudmaven</id>
+            <url>https://mirrors.tencent.com/nexus/repository/maven-public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        &lt;!&ndash;中科大仓库&ndash;&gt;
+        <repository>
+            <id>ustcmaven</id>
+            <url>https://maven.ustc.edu.cn/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        &lt;!&ndash; 配置官方Maven中央仓库 &ndash;&gt;
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>-->
+
+    <build>
+        <plugins>
+            <!-- Maven 编译器插件 - 配置 JDK 25 + Lombok 支持 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <!-- Lombok 在 JDK 25 上需要的 add-opens 参数 -->
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <!-- MapStruct Plus 注解处理器（必须在 Lombok 之后） -->
+                        <path>
+                            <groupId>io.github.linpeilie</groupId>
+                            <artifactId>mapstruct-plus-processor</artifactId>
+                            <version>${mapstruct-plus.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>2.45.0</version>
+                <configuration>
+                    <java>
+                        <encoding>UTF-8</encoding>
+                        <eclipse>
+                            <file>baeldung-style.xml</file>
+                        </eclipse>
+                        <removeUnusedImports/>
+                    </java>
+                </configuration>
+            </plugin>
+            <!-- Flatten Maven Plugin: 解决多模块项目中 ${revision} 变量替换问题 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

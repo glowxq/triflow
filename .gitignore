@@ -1,0 +1,52 @@
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Java 构建产物
+target/
+.flattened-pom.xml
+
+# Node.js 依赖和构建产物
+node_modules/
+dist/
+.output/
+.cache/
+
+# 运行时（脚本产生的 PID/日志）
+.run/
+
+# 日志
+*.log
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.swp
+*.bak
+*.orig
+*~
+
+# 敏感文件 / Sensitive files
+.env
+!.env.example
+*.p12
+*.pem
+*.key
+**/cert/
+
+# Docker 持久化数据 / Docker volumes
+docker/mysql/data/
+docker/redis/data/
+docker/minio/data/
+
+# Playwright / 浏览器测试产物
+.playwright-mcp/
+
+# LLM/AI working notes (may contain credentials)
+llm-todo/
+docs/ai_book/
+docs/mcp.json

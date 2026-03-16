@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+*.iml
+.run/
+logs/
+target/
+.flattened-pom.xml
+*.log
+.DS_Store

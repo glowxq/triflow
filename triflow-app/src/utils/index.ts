@@ -1,0 +1,163 @@
+import type { PageMetaDatum, SubPackages } from '@uni-helper/vite-plugin-uni-pages'
+import { isMpWeixin } from '@uni-helper/uni-env'
+import { pages, subPackages } from '@/pages.json'
+
+export type PageInstance = Page.PageInstance<AnyObject, object> & { $page: Page.PageInstance<AnyObject, object> & { fullPath: string } }
+
+export function getLastPage() {
+  // getCurrentPages() 至少有1个元素，所以不再额外判断
+  // const lastPage = getCurrentPages().at(-1)
+  // 上面那个在低版本安卓中打包会报错，所以改用下面这个【虽然我加了 src/interceptions/prototype.ts，但依然报错】
+  const pages = getCurrentPages()
+  return pages[pages.length - 1] as PageInstance
+}
+
+/**
+ * 获取当前页面路由的 path 路径和 redirectPath 路径
+ * path 如 '/pages/login/login'
+ * redirectPath 如 '/pages/demo/base/route-interceptor'
+ */
+export function currRoute() {
+  const lastPage = getLastPage() as PageInstance
+  if (!lastPage) {
+    return {
+      path: '',
+      query: {},
+    }
+  }
+  const currRoute = lastPage.$page
+  // console.log('lastPage.$page:', currRoute)
+  // console.log('lastPage.$page.fullpath:', currRoute.fullPath)
+  // console.log('lastPage.$page.options:', currRoute.options)
+  // console.log('lastPage.options:', (lastPage as any).options)
+  // 经过多端测试，只有 fullPath 靠谱，其他都不靠谱
+  const { fullPath } = currRoute
+  // console.log(fullPath)
+  // eg: /pages/login/login?redirect=%2Fpages%2Fdemo%2Fbase%2Froute-interceptor (小程序)
+  // eg: /pages/login/login?redirect=%2Fpages%2Froute-interceptor%2Findex%3Fname%3Dfeige%26age%3D30(h5)
+  return parseUrlToObj(fullPath)
+}
+
+export function ensureDecodeURIComponent(url: string) {
+  if (url.startsWith('%')) {
+    return ensureDecodeURIComponent(decodeURIComponent(url))
+  }
+  return url
+}
+/**
+ * 解析 url 得到 path 和 query
+ * 比如输入url: /pages/login/login?redirect=%2Fpages%2Fdemo%2Fbase%2Froute-interceptor
+ * 输出: {path: /pages/login/login, query: {redirect: /pages/demo/base/route-interceptor}}
+ */
+export function parseUrlToObj(url: string) {
+  const [path, queryStr] = url.split('?')
+  // console.log(path, queryStr)
+
+  if (!queryStr) {
+    return {
+      path,
+      query: {},
+    }
+  }
+  const query: Record<string, string> = {}
+  queryStr.split('&').forEach((item) => {
+    const [key, value] = item.split('=')
+    // console.log(key, value)
+    query[key] = ensureDecodeURIComponent(value) // 这里需要统一 decodeURIComponent 一下，可以兼容h5和微信y
+  })
+  return { path, query }
+}
+/**
+ * 得到所有的需要登录的 pages，包括主包和分包的
+ * 这里设计得通用一点，可以传递 key 作为判断依据，默认是 excludeLoginPath, 与 route-block 配对使用
+ * 如果没有传 key，则表示所有的 pages，如果传递了 key, 则表示通过 key 过滤
+ */
+export function getAllPages(key?: string) {
+  // 这里处理主包
+  const mainPages = (pages as PageMetaDatum[])
+    .filter(page => !key || page[key])
+    .map(page => ({
+      ...page,
+      path: `/${page.path}`,
+    }))
+
+  // 这里处理分包
+  const subPages: PageMetaDatum[] = []
+  ;(subPackages as SubPackages).forEach((subPageObj) => {
+    // console.log(subPageObj)
+    const { root } = subPageObj
+
+    subPageObj.pages
+      .filter(page => !key || page[key])
+      .forEach((page) => {
+        subPages.push({
+          ...page,
+          path: `/${root}/${page.path}`,
+        })
+      })
+  })
+  const result = [...mainPages, ...subPages]
+  // console.log(`getAllPages by ${key} result: `, result)
+  return result
+}
+
+export function getCurrentPageI18nKey() {
+  const routeObj = currRoute()
+  const currPage = (pages as PageMetaDatum[]).find(page => `/${page.path}` === routeObj.path)
+  if (!currPage) {
+    console.warn('路由不正确')
+    return ''
+  }
+  console.log(currPage)
+  console.log(currPage.style.navigationBarTitleText)
+  return currPage.style?.navigationBarTitleText || ''
+}
+
+/**
+ * 根据微信小程序当前环境，判断应该获取的 baseUrl
+ *
+ * 小程序环境说明：
+ * - develop: 开发版（微信开发者工具中运行），需要勾选"不校验合法域名"
+ * - trial: 体验版（上传到微信后台的测试版）
+ * - release: 正式版（已发布的线上版本）
+ */
+export function getEnvBaseUrl() {
+  // 请求基准地址（从环境变量获取，开发环境为 http://127.0.0.1:7100，线上为 https://your-api-domain.com）
+  let baseUrl = import.meta.env.VITE_SERVER_BASEURL
+
+  // 微信小程序端根据发布环境覆盖 baseUrl
+  // 注意：develop 环境使用 .env.development 的配置，需要在开发者工具勾选"不校验合法域名"
+  const VITE_SERVER_BASEURL__WEIXIN_DEVELOP = '' // 留空则使用 .env.development 配置
+  const VITE_SERVER_BASEURL__WEIXIN_TRIAL = 'https://your-api-domain.com' // 体验版使用线上地址
+  const VITE_SERVER_BASEURL__WEIXIN_RELEASE = 'https://your-api-domain.com' // 正式版使用线上地址
+
+  // 微信小程序端环境区分
+  if (isMpWeixin) {
+    const {
+      miniProgram: { envVersion },
+    } = uni.getAccountInfoSync()
+
+    switch (envVersion) {
+      case 'develop':
+        // develop 环境：优先使用硬编码地址，否则使用 .env 配置
+        baseUrl = VITE_SERVER_BASEURL__WEIXIN_DEVELOP || baseUrl
+        break
+      case 'trial':
+        // trial 环境：优先使用体验版地址
+        baseUrl = VITE_SERVER_BASEURL__WEIXIN_TRIAL || baseUrl
+        break
+      case 'release':
+        // release 环境：优先使用正式版地址
+        baseUrl = VITE_SERVER_BASEURL__WEIXIN_RELEASE || baseUrl
+        break
+    }
+  }
+
+  return baseUrl
+}
+
+/**
+ * 首页路径，通过 page.json 里面的 type 为 home 的页面获取，如果没有，则默认是第一个页面
+ * 通常为 /pages/index/index
+ */
+export const HOME_PAGE = `/${(pages as PageMetaDatum[]).find(page => page.type === 'home')?.path || (pages as PageMetaDatum[])[0].path}`

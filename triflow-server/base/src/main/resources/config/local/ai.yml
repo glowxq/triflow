@@ -1,0 +1,48 @@
+triflow:
+  ai:
+    enabled: true
+    default-provider: deepseek
+    memory-window-size: 20
+    memory-storage: memory
+    logging:
+      enabled: true
+      include-prompt: false
+      include-completion: false
+
+spring:
+  ai:
+    chat:
+      client:
+        enabled: false
+    openai:
+      api-key: ${AI_OPENAI_API_KEY:sk-xxx}
+      base-url: https://api.openai.com
+      chat:
+        enabled: false
+        options:
+          model: gpt-4o-mini
+    deepseek:
+      api-key: ${AI_DEEPSEEK_API_KEY:sk-xxx}
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0.7
+    zhipuai:
+      api-key: ${AI_ZHIPU_API_KEY:xxx.xxx}
+      chat:
+        enabled: false
+        options:
+          model: glm-4-flash
+    anthropic:
+      api-key: ${AI_ANTHROPIC_API_KEY:sk-xxx}
+      chat:
+        enabled: false
+        options:
+          model: claude-sonnet-4-20250514
+          max-tokens: 4096
+    ollama:
+      base-url: ${AI_OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        enabled: false
+        options:
+          model: qwen2.5:7b

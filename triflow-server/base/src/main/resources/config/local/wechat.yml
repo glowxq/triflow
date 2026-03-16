@@ -1,0 +1,22 @@
+# 微信配置 (可选：配置后启用微信登录/支付功能)
+wechat:
+  app-id: ${WECHAT_APPID:your-wechat-appid}
+  mini-app:
+    app-id: ${wechat.app-id}
+    secret: ${WECHAT_SECRET:your-wechat-secret}
+    token:
+    aes-key:
+    msg-data-format: JSON
+  pay:
+    app-id: ${wechat.app-id}
+    mch-id: ${WECHAT_MCH_ID:your-mch-id}
+    mch-key: ${WECHAT_MCH_KEY:your-mch-key}
+    sub-app-id:
+    sub-mch-id:
+    notify-url: ${WECHAT_NOTIFY_URL:http://localhost:7100/wechat}
+    pay-notify-path: /notify/wechat/payment
+    refund-notify-path: /notify/wechat/refund
+    api-v3-key: ${WECHAT_API_V3_KEY:your-api-v3-key}
+    private-key-path: classpath:cert/apiclient_key.pem
+    private-cert-path: classpath:cert/apiclient_cert.pem
+    key-path: classpath:cert/apiclient_cert.p12

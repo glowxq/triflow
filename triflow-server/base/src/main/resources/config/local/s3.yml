@@ -1,0 +1,15 @@
+s3:
+  enabled: ${S3_ENABLED:true}
+  provider: ${S3_PROVIDER:MINIO}
+  endpoint: ${MINIO_ENDPOINT:http://localhost:9000}
+  region: ${MINIO_REGION:us-east-1}
+  access-key: ${MINIO_ACCESS_KEY:triflow}
+  secret-key: ${MINIO_SECRET_KEY:triflow123}
+  bucket-name: ${MINIO_BUCKET:triflow}
+  domain:
+  naming-strategy: ORIGINAL
+  use-https: false
+  presigned-url-expire-minutes: 10
+  sts-token-duration-seconds: 3600
+  sts-role-arn:
+  sts-role-session-name: s3-upload-session

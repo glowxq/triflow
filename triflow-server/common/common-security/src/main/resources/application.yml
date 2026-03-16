@@ -1,0 +1,18 @@
+router:
+  whitelist:
+    - "/v3/api-docs/**"
+    - "/auth/login"
+    - "/auth/feishu/**"
+    - "/auth/feishu/authUrl"
+    - "/register"
+    - "/sys-dict/dict"
+    - "/doc.html"
+    - "/webjars/**"
+    - "/swagger-resources"
+    - "/favicon.ico"
+    - "/common/**"
+    - "/swagger-ui.html"
+    - "/www/**"
+    - "/captcha/status"
+    - "/notify/**"
+    - "/base/enums/**"

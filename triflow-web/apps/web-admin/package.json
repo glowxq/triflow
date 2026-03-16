@@ -1,0 +1,55 @@
+{
+  "name": "@triflow/web-admin",
+  "version": "1.0.0",
+  "homepage": "https://github.com/glowxq/triflow",
+  "bugs": "https://github.com/glowxq/triflow/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glowxq/triflow.git",
+    "directory": "triflow-web/apps/web-admin"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "glowxq"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "pnpm vite build --mode production",
+    "build:analyze": "pnpm vite build --mode analyze",
+    "dev": "pnpm vite --mode development",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
+  },
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "dependencies": {
+    "@monaco-editor/loader": "^1.7.0",
+    "@vben/access": "workspace:*",
+    "@vben/common-ui": "workspace:*",
+    "@vben/constants": "workspace:*",
+    "@vben/hooks": "workspace:*",
+    "@vben/icons": "workspace:*",
+    "@vben/layouts": "workspace:*",
+    "@vben/locales": "workspace:*",
+    "@vben/plugins": "workspace:*",
+    "@vben/preferences": "workspace:*",
+    "@vben/request": "workspace:*",
+    "@vben/stores": "workspace:*",
+    "@vben/styles": "workspace:*",
+    "@vben/types": "workspace:*",
+    "@vben/utils": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "@wangeditor/editor": "^5.1.23",
+    "dayjs": "catalog:",
+    "element-plus": "catalog:",
+    "md-editor-v3": "^6.3.1",
+    "monaco-editor": "^0.55.1",
+    "pinia": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "unplugin-element-plus": "catalog:"
+  }
+}

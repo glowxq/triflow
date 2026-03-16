@@ -1,0 +1,36 @@
+# Node
+**/node_modules
+**/.turbo
+**/dist
+
+# Java
+**/target
+
+# IDE
+**/.idea
+**/.vscode
+**/.fleet
+
+# OS
+**/.DS_Store
+**/Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Docker build artifacts
+**/*.log
+
+# Documentation (not needed in image)
+docs/
+scripts/
+*.md
+!docker/**
+
+# Environment files
+.env
+.env.*
+
+# Playwright
+.playwright-mcp/
